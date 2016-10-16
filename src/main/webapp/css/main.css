@@ -1,0 +1,33 @@
+.navbar {
+	background-color: #A66FA6;
+	border-color: #A66FA6;
+}
+
+.navbar>.container>.navbar-header>.navbar-brand {
+	color: white;
+}
+
+.navbar>.container>div>.navbar-nav>li>a {
+	background: none;
+	color: white;
+	font-weight: bold;
+}
+
+.navbar>.container>div>.navbar-nav>li>a:hover {
+	background: none;
+	color: #530E53;
+	font-weight: bold;
+}
+
+
+
+.panel > .panel-heading {
+	
+	background-color: #A66FA6;
+	color: white;
+	font-weight: bold;
+}
+
+textarea {
+	width: 100%; 
+}
