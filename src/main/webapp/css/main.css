@@ -7,6 +7,10 @@
 	color: white;
 }
 
+.navbar>.container>.navbar-text {
+	color: white;
+}
+
 .navbar>.container>div>.navbar-nav>li>a {
 	background: none;
 	color: white;
@@ -19,15 +23,37 @@
 	font-weight: bold;
 }
 
-
-
-.panel > .panel-heading {
-	
+.panel>.panel-heading {
 	background-color: #A66FA6;
 	color: white;
 	font-weight: bold;
 }
 
 textarea {
-	width: 100%; 
+	width: 100%;
 }
+
+.login-form {width 100%;
+	
+}
+
+.login-form>div {
+	width 100%;
+	
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.login-form> div > button {
+	
+	background-color: yellow;
+	color: white;
+	font-weight: bold;
+	border-color: dark-blue;
+	
+	
+	
+}
+
+
+

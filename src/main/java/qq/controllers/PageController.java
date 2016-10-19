@@ -24,38 +24,55 @@ public class PageController {
 	String about() {
 		return "app.about";
 	}
-
-	// MODEL CZYLI INFORMACJE Z FORMULARZA
-
-	@RequestMapping(value = "/addstatus", method = RequestMethod.GET)
-	ModelAndView addStatus(ModelAndView modelAndView) {
-
-		// SET VIEW - PRZEKIEROWANIE DO WIDOKU
-		modelAndView.setViewName("app.addStatus");
-
-		StatusUpdate statusUpdate = new StatusUpdate();
-		
-		StatusUpdate latestStatusUpdate = statusUpdateService.getLatest();
-
-		// MAPUJE MODEL DO OBIEKTU STATUSUPDATE XD
-		modelAndView.getModel().put("statusUpdate", statusUpdate);
-		modelAndView.getModel().put("latestStatusUpdate", latestStatusUpdate);
-
-		return modelAndView;
+	
+	@RequestMapping("/contact")
+	String contact() {
+		return "app.contact";
 	}
+	
+	@RequestMapping("/logout")
+	String logout() {
+		return "app.logout";
+	}
+	
 
-	@RequestMapping(value = "/addstatus", method = RequestMethod.POST)
-	ModelAndView addStatus(ModelAndView modelAndView, StatusUpdate statusUpdate) {
-
-		// SET VIEW - PRZEKIEROWANIE DO WIDOKU
-		modelAndView.setViewName("app.addStatus");
-
-		
-		statusUpdateService.save(statusUpdate);
-		
-		StatusUpdate latestStatusUpdate = statusUpdateService.getLatest();
-		modelAndView.getModel().put("latestStatusUpdate", latestStatusUpdate);
-		
-		return modelAndView;
+	
+	@RequestMapping("/messages")
+	String messages() {
+		return "app.messages";
+	}
+	
+	@RequestMapping("/newsmanager")
+	String newsmanager() {
+		return "app.newsmanager";
+	}
+	@RequestMapping("/tutorialsmanager")
+	String tutorialsmanager() {
+		return "app.tutorialsmanager";
+	}
+	
+	@RequestMapping("/profile")
+	String profile() {
+		return "app.profile";
+	}
+	
+	@RequestMapping("/search")
+	String search() {
+		return "app.search";
+	}
+	
+	@RequestMapping("/sendemails")
+	String sendemails() {
+		return "app.sendemails";
+	}
+	
+	@RequestMapping("/tutorials")
+	String tutorials() {
+		return "app.tutorials";
+	}
+	
+	@RequestMapping("/usersmanager")
+	String usermanager() {
+		return "app.usersmanager";
 	}
 }

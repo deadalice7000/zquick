@@ -26,40 +26,74 @@
 </head>
 <body>
 
-<!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Spring Boot Tutorial</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li class="active"><a href="/about">About</a></li>
-            
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/addstatus">Add news</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<!-- Static navbar -->
+	<nav class="navbar navbar-default navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Quick Java</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home	</a></li>
+				<li class="active"><a href="/tutorials">Tutorials</a></li>
+				<li class="active"><a href="/search">Search</a></li>
+				<li class="active"><a href="/about">About</a></li>
+				<li class="active"><a href="/contact">Contact</a></li>
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="true">
+						Account <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="/messages">Messages</a></li>
+					<li><a href="/profile">Profile</a></li>
+					<li role="separator" class="divider"></li>
+						<li><a href="/tutorialsmanager">Tutorials manager</a></li>
+						<li><a href="/newsmanager">News manager</a></li>
+						<li><a href="/usersmanager">Users manager</a></li>
+						<li><a href="/sendemails">Send emails</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/logout">Log out</a></li>
+					</ul>
+				</div>
+
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+	</nav>
 
 	<div class="container">
 		<tiles:insertAttribute name="content" />
 	</div>
 
 
+	<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+		
+		<p class="navbar-text">All rights reserved. Site build by DEADALICE7000. Check qqdeadalice7000.blogspot.com</p>
+		</div>
+	</div>
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>
