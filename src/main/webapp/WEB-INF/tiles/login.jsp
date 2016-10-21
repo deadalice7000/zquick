@@ -12,18 +12,36 @@
 
 	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<div class="panel panel default">
-		
-		
-	
-		
+
+
+
+
 			<div class="panel-heading">
-			
-				<div class="panel-title">User log in.</div>
+
+				<div class="panel-title">log in!</div>
 			</div>
-			<div class="panel-body"></div>
+
+			<form method="post" action="${loginUrl}">
 			
-	
+				<div class="input-group">
+					<input type="text" name="username" placeholder="username" class="form-control" />
+				</div>
+				<div class="input-group">
+					<input type="password" name="password" placeholder="password" class="form-control"/>
+				</div>
+				<div class="input-group">
+					<input type="button" value="Log in!" class="btn-primary pull-right"/>
+				</div>
+				
+				
+
+			</form>
+
+			<div class="panel-body"></div>
+
+
 
 
 		</div>
 	</div>
+</div>

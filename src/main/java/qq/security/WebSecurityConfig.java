@@ -35,7 +35,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 							)
 					.permitAll()
 				.anyRequest()
-						.authenticated();
+						.authenticated()
+						.and()
+				.formLogin()
+					.loginPage("/login")
+					.defaultSuccessUrl("/")
+					.permitAll(); // redirect to page after successfull logIN KURWA
 			
 			//@formatter:on		
 
