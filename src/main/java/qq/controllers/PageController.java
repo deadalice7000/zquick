@@ -30,10 +30,7 @@ public class PageController {
 		return "app.contact";
 	}
 	
-	@RequestMapping("/logout")
-	String logout() {
-		return "app.logout";
-	}
+
 	
 
 	

@@ -23,6 +23,8 @@
 
 			<form method="post" action="${loginUrl}">
 			
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			
 				<div class="input-group">
 					<input type="text" name="username" placeholder="username" class="form-control" />
 				</div>
@@ -30,8 +32,16 @@
 					<input type="password" name="password" placeholder="password" class="form-control"/>
 				</div>
 				<div class="input-group">
-					<input type="button" value="Log in!" class="btn-primary pull-right"/>
+				
+				
+					<button type="submit" class="btn-primary pull-right">Log in!</button>
 				</div>
+				
+				
+				<!-- TEST JESLI PARAMETER ERROR NIE JEST PUSTY WTEDY WYSKAKUJE ERROR XD -->
+				<c:if test="${param.error !=null}">
+					<font color="red"><b>Wrong username or password. Please try again!</b></font>
+				</c:if>
 				
 				
 

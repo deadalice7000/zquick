@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -65,7 +68,7 @@
 						<li><a href="/usersmanager">Users manager</a></li>
 						<li><a href="/sendemails">Send emails</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="javascript:$('#logoutForm.submit();')">Log out</a></li>
+						<li><a href="javascript:$('#logoutForm').submit();">Log out</a></li>
 					</ul>
 				</div>
 
@@ -74,6 +77,11 @@
 		<!--/.nav-collapse -->
 	</div>
 	</nav>
+	
+	<c:url var="logoutlink" value="/logout"/>
+	<form id="logoutForm" method="post" action="${logoutlink}">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	</form>
 	
 		
 	

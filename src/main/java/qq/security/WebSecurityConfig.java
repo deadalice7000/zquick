@@ -35,15 +35,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 							)
 					.permitAll()
 				.anyRequest()
-						.authenticated()
-						.and()
+					.authenticated()
+					.and()
 				.formLogin()
 					.loginPage("/login")
-					.defaultSuccessUrl("/")
-					.permitAll(); // redirect to page after successfull logIN KURWA
+					.defaultSuccessUrl("/")// redirect to page after successfull login
+					.permitAll()
+					.and()
+				.logout()
+					.permitAll(); 
 			
 			//@formatter:on		
 
 	}
+	
+	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+		
+		//@formatter:off	
+		auth.inMemoryAuthentication()
+		.withUser("root")
+		.password("root")
+		.roles("USER");
+		
+		//@formatter:on		
+		
+		
+	}
+	
 
 }
