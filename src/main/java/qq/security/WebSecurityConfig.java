@@ -14,37 +14,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		//@// @formatter:off
+		//@formatter:off
 
+		
+		
+		//ZEZWOŁ WSZYSTKIM NA DOSTEP DO "/" oraz "css,js,img", reszta wymaga authenticated
+		
 			http
-			.authorizeRequests()
-				.antMatchers("/","/tutorials","/search","/about","/contact")
-				.permitAll()
-				.antMatchers("/js/**","/css/**","/img/**")
-				.permitAll()
-			.anyRequest()
-				.authenticated()
-				.and()
-			.formLogin()
-			//login page url
-				.loginPage("/login")
-			//REDIRECT NA POPRAWNE ZALOGOWANIE	
-				.defaultSuccessUrl("/")
-				.permitAll();
-				
-			// @formatter:on
-	}
-
-	@Autowired
-
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		//@// @formatter:off
-			auth.inMemoryAuthentication()
-				.withUser("root")
-				.password("root")
-				.roles("USER");
+				.authorizeRequests()
+					.antMatchers("/"
+							,"/tutorials"
+							,"/search"
+							,"/about"
+							,"/contact")
+					.permitAll()
+					.antMatchers(
+							"/css/*",
+							"/js/*",
+							"/img/*"
+							)
+					.permitAll()
+				.anyRequest()
+						.authenticated();
 			
-			//@// @formatter:on
+			//@formatter:on		
+
 	}
 
 }

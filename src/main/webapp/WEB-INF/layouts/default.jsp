@@ -65,7 +65,7 @@
 						<li><a href="/usersmanager">Users manager</a></li>
 						<li><a href="/sendemails">Send emails</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="/logout">Log out</a></li>
+						<li><a href="javascript:$('#logoutForm.submit();')">Log out</a></li>
 					</ul>
 				</div>
 
@@ -74,6 +74,9 @@
 		<!--/.nav-collapse -->
 	</div>
 	</nav>
+	
+		
+	
 
 	<div class="container">
 		<tiles:insertAttribute name="content" />
