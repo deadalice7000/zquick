@@ -4,7 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,7 +46,7 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home	</a></li>
+				<li class="active"><a href="/">Home </a></li>
 				<li class="active"><a href="/tutorials">Tutorials</a></li>
 				<li class="active"><a href="/search">Search</a></li>
 				<li class="active"><a href="/about">About</a></li>
@@ -53,62 +54,64 @@
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			
-			
-			
-			
-				
-				
+
+
+
+
+
+
 				<div class="dropdown">
 					<!-- SHOWS WHEN USER ISNT LOGED IN -->
-					
+
 					<sec:authorize access="!isAuthenticated()">
-					<a href="/login" class="btn btn-default" role="button">Log in</a>
-					<a href="/register" class="btn btn-default" role="button">Register</a>
+						<a href="/login" class="btn btn-default" role="button">Log in</a>
+						<a href="/register" class="btn btn-default" role="button">Register</a>
 					</sec:authorize>
-				
-				
-				<!-- APPEARED AFTER USER LOG IN! -->
-				
-				
+
+
+					<!-- APPEARED AFTER USER LOG IN! -->
+
+
 					<sec:authorize access="isAuthenticated()">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="true">
-						Account <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="/messages">Messages</a></li>
-					<li><a href="/profile">Profile</a></li>
-					<li role="separator" class="divider"></li>
-						<li><a href="/tutorialsmanager">Tutorials manager</a></li>
-						<li><a href="/newsmanager">News manager</a></li>
-						<li><a href="/usersmanager">Users manager</a></li>
-						<li><a href="/sendemails">Send emails</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="javascript:$('#logoutForm').submit();">Log out</a></li>
-					</ul>
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Account <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="/messages">Messages</a></li>
+							<li><a href="/profile">Profile</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/tutorialsmanager">Tutorials manager</a></li>
+							<li><a href="/newsmanager">News manager</a></li>
+							<li><a href="/usersmanager">Users manager</a></li>
+							<li><a href="/sendemails">Send emails</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="javascript:$('#logoutForm').submit();">Log
+									out</a></li>
+						</ul>
 					</sec:authorize>
-					
-					
-					
-					
+
+
+
+
 				</div>
-				
+
 
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
 	</div>
 	</nav>
-	
-	<c:url var="logoutlink" value="/logout"/>
+
+	<c:url var="logoutlink" value="/logout" />
 	<form id="logoutForm" method="post" action="${logoutlink}">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 	</form>
-	
-		
-	
+
+
+
 
 	<div class="container">
 		<tiles:insertAttribute name="content" />
@@ -118,8 +121,8 @@
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 
-			<p class="navbar-text">All rights reserved. Site build by
-				DEADALICE7000. Check qqdeadalice7000.blogspot.com</p>
+			<p class="navbar-text">
+				Created by DEADALICE7000. Visit qqdeadalice7000@blogspot.com</p>
 		</div>
 	</div>
 

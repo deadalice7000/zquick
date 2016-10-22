@@ -1,15 +1,20 @@
 package qq.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import qq.model.SiteUser;
+import qq.model.News;
+import qq.service.NewsService;
 
 @Controller
 public class PageController {
 
+	@Autowired
+	private NewsService newsService;
+	
 	@RequestMapping("/")
 	String home() {
 		return "app.homepage";
@@ -28,11 +33,6 @@ public class PageController {
 	@RequestMapping("/messages")
 	String messages() {
 		return "app.messages";
-	}
-
-	@RequestMapping("/newsmanager")
-	String newsmanager() {
-		return "app.newsmanager";
 	}
 
 	@RequestMapping("/tutorialsmanager")
@@ -64,7 +64,28 @@ public class PageController {
 	String usersmanager() {
 		return "app.usersmanager";
 	}
+
+	@RequestMapping(value="/newsmanager", method=RequestMethod.GET)
+	ModelAndView addnews(ModelAndView modelAndView) {
+		
+		modelAndView.setViewName("app.newsmanager");
+		
+		News news = new News();
+		
+		modelAndView.getModel().put("news", news);
+		return modelAndView;
+	}
 	
 
-	
+	@RequestMapping(value="/newsmanager", method=RequestMethod.POST)
+	ModelAndView addnews(ModelAndView modelAndView, News news) {
+		
+		modelAndView.setViewName("app.newsmanager");
+			
+		newsService.add(news);
+			
+		
+		return modelAndView;
+	}
+
 }
