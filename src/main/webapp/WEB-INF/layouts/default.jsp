@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -52,8 +53,25 @@
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-
+			
+			
+			
+			
+				
+				
 				<div class="dropdown">
+					<!-- SHOWS WHEN USER ISNT LOGED IN -->
+					
+					<sec:authorize access="!isAuthenticated()">
+					<a href="/login" class="btn btn-default" role="button">Log in</a>
+					<a href="/register" class="btn btn-default" role="button">Register</a>
+					</sec:authorize>
+				
+				
+				<!-- APPEARED AFTER USER LOG IN! -->
+				
+				
+					<sec:authorize access="isAuthenticated()">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="true">
@@ -70,7 +88,13 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="javascript:$('#logoutForm').submit();">Log out</a></li>
 					</ul>
+					</sec:authorize>
+					
+					
+					
+					
 				</div>
+				
 
 			</ul>
 		</div>
@@ -93,8 +117,9 @@
 
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
-		
-		<p class="navbar-text">All rights reserved. Site build by DEADALICE7000. Check qqdeadalice7000.blogspot.com</p>
+
+			<p class="navbar-text">All rights reserved. Site build by
+				DEADALICE7000. Check qqdeadalice7000.blogspot.com</p>
 		</div>
 	</div>
 

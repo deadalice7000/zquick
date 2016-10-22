@@ -13,8 +13,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 
 import qq.App;
-import qq.model.StatusUpdate;
-import qq.model.StatusUpdateDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(App.class)
@@ -23,24 +21,6 @@ import qq.model.StatusUpdateDao;
 //RUNNING TEST WITHOUT COMMITING TO THE DATABASES
 @Transactional
 public class StatusTest {
-
-	@Autowired
-	private StatusUpdateDao statusUpdateDao;
-	
-	@Test
-	public void testSave(){
-		
-		StatusUpdate status = new StatusUpdate("this is a test status update");
-		
-		statusUpdateDao.save(status);
-		
-		assertNotNull("Non null ID",status.getId());
-		assertNotNull("Non null Date",status.getAdded());
-		
-		StatusUpdate retrieved = statusUpdateDao.findOne(status.getId());
-		
-		assertEquals("Matching status update.", status, retrieved );
-	}
 	
 	
 	
