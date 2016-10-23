@@ -55,24 +55,75 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 
-
-
-
-
-
 				<div class="dropdown">
+					
 					<!-- SHOWS WHEN USER ISNT LOGED IN -->
-
 					<sec:authorize access="!isAuthenticated()">
 						<a href="/login" class="btn btn-default" role="button">Log in</a>
 						<a href="/register" class="btn btn-default" role="button">Register</a>
 					</sec:authorize>
 
 
-					<!-- APPEARED AFTER USER LOG IN! -->
+
+				<!--  APPEARED FOR ROLE_BANNED -->
+					<sec:authorize access="hasRole('BAN')">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Account <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+							<li role="separator" class="divider"></li>
+							<li><a href="javascript:$('#logoutForm').submit();">Log
+									out</a></li>
+						</ul>
+					</sec:authorize>
 
 
-					<sec:authorize access="isAuthenticated()">
+
+					<!--  APPEARED FOR ROLE_USER -->
+					<sec:authorize access="hasRole('USER')">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Account <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+							<li><a href="/messages">Messages</a></li>
+							<li><a href="/profile">Profile</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="javascript:$('#logoutForm').submit();">Log
+									out</a></li>
+						</ul>
+					</sec:authorize>
+
+
+
+
+					<!--  APPEARED FOR ROLE_MOD -->
+					<sec:authorize access="hasRole('MOD')">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Account <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+							<li><a href="/messages">Messages</a></li>
+							<li><a href="/profile">Profile</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/suggestnews">Suggest a news</a></li>
+							<li><a href="/suggesttutorial">Suggest a tutorial</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="javascript:$('#logoutForm').submit();">Log
+									out</a></li>
+						</ul>
+					</sec:authorize>
+
+
+
+
+					<!-- APPEARED FOR ROLE_ADMIN -->
+					<sec:authorize access="hasRole('ADMIN')">
 						<button class="btn btn-default dropdown-toggle" type="button"
 							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="true">
@@ -91,7 +142,6 @@
 									out</a></li>
 						</ul>
 					</sec:authorize>
-
 
 
 
@@ -121,8 +171,7 @@
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 
-			<p class="navbar-text">
-				Created by DEADALICE7000. Visit qqdeadalice7000@blogspot.com</p>
+			<p class="navbar-text">Created by Jędrzej Sieja</p>
 		</div>
 	</div>
 

@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import qq.model.SiteUser;
@@ -20,7 +21,13 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserDao userDao;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	public void register(SiteUser user) {
+		
+		user.setRole("ROLE_USER");
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDao.save(user);
 	}
 
@@ -33,11 +40,13 @@ public class UserService implements UserDetailsService {
 			return null;
 		}
 
-		List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+		List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRole());
 
 		String password = user.getPassword();
 
 		return new User(email, password, auth);
 	}
+	
+	
 
 }

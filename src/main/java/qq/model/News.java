@@ -20,6 +20,8 @@ public class News {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
+
+
 	@Column(name = "added")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date added;
@@ -66,6 +68,16 @@ public class News {
 		this.content = content;
 	}
 	
+	
+	public Date getAdded() {
+		return added;
+	}
+
+
+	public void setAdded(Date added) {
+		this.added = added;
+	}
+	
 	public News(){
 		
 		
@@ -74,7 +86,7 @@ public class News {
 	public News(String title, String content, Date added) {
 		this.title = title;
 		this.content = content;
-		this.added = new Date();
+		this.added =added;
 	}
 
 	public News(String title, String content) {

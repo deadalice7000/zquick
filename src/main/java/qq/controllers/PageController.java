@@ -1,7 +1,11 @@
 package qq.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,9 +19,11 @@ public class PageController {
 	@Autowired
 	private NewsService newsService;
 	
+	
 	@RequestMapping("/")
 	String home() {
 		return "app.homepage";
+		
 	}
 
 	@RequestMapping("/about")
@@ -64,6 +70,16 @@ public class PageController {
 	String usersmanager() {
 		return "app.usersmanager";
 	}
+	
+	@RequestMapping("/suggestnews")
+	String suggestnews() {
+		return "app.suggestnews";
+	}
+	
+	@RequestMapping("/suggesttutorial")
+	String suggesttutorial() {
+		return "app.suggesttutorial";
+	}
 
 	@RequestMapping(value="/newsmanager", method=RequestMethod.GET)
 	ModelAndView addnews(ModelAndView modelAndView) {
@@ -72,7 +88,12 @@ public class PageController {
 		
 		News news = new News();
 		
+		List<News> allNews = newsService.listAll();
+		
+		
 		modelAndView.getModel().put("news", news);
+		
+		modelAndView.getModel().put("allNews", allNews);
 		return modelAndView;
 	}
 	
@@ -83,9 +104,26 @@ public class PageController {
 		modelAndView.setViewName("app.newsmanager");
 			
 		newsService.add(news);
-			
+		
+		News latestNews = newsService.getLatest();
+		modelAndView.getModel().put("latestNews", latestNews);
+		
+		
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/newsmanager/delete{id}")
+		public String removeNews(@PathVariable("id") Long id){
+		
+		newsService.delete(id);
+
+		
+		return "redirect:/newsmanager";
+		
+		
+	}
+		
+	
 
 }

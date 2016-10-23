@@ -19,8 +19,11 @@ public class SiteUser {
 	@Column(name="email", unique=true)
 	private String email;
 
-	@Column(name = "password")
+	@Column(name = "password",length=60)
 	private String password;
+	
+	@Column(name="role", length=15)
+	private String role;
 
 	public Long getId() {
 		return id;
@@ -46,4 +49,13 @@ public class SiteUser {
 		this.password = password;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	
 }

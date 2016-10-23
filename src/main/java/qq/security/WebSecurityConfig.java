@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import qq.service.UserService;
 
@@ -16,49 +17,56 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		//@formatter:off
-
-		
-		
-		//ZEZWOŁ WSZYSTKIM NA DOSTEP DO "/" oraz "css,js,img", reszta wymaga authenticated
-		
-			http
-				.authorizeRequests()
-					.antMatchers("/"
-							,"/tutorials"
-							,"/search"
-							,"/about"
-							,"/contact"
-							,"/register")
-					.permitAll()
-					.antMatchers(
-							"/css/*",
-							"/js/*",
-							"/img/*"
-							)
-					.permitAll()
-				.anyRequest()
-					.authenticated()
+		http
+			.authorizeRequests()
+				.antMatchers("/"
+					,"/tutorials"
+					,"/search"
+					,"/about"
+					,"/contact"
+					,"/register",
+					"/css/*",
+					"/js/*",
+					"/img/*")
+						.permitAll()
+				.antMatchers(
+					"/suggestnews",
+					"/suggesttutorial")
+						.hasRole("MOD")
+				.antMatchers(
+					"/newsmanager",
+					"/tutorialsmanager",
+					"/usersmanager",
+					"/sendemails")
+						.hasRole("ADMIN")
+				.antMatchers(
+					"/messages",
+					"/profile",
+					"/logout")
+				.authenticated()	
 					.and()
 				.formLogin()
 					.loginPage("/login")
-					.defaultSuccessUrl("/")// redirect to page after successfull login
+					.defaultSuccessUrl("/")
 					.permitAll()
 					.and()
 				.logout()
 					.permitAll(); 
 			
 			//@formatter:on		
-
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.userDetailsService(userService);
+		auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
 
 	}
 
