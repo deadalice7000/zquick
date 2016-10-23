@@ -16,14 +16,20 @@ import qq.service.NewsService;
 @Controller
 public class PageController {
 
-	@Autowired
-	private NewsService newsService;
-	
-	
 	@RequestMapping("/")
 	String home() {
 		return "app.homepage";
-		
+
+	}
+
+	@RequestMapping("/tutorials")
+	String tutorials() {
+		return "app.tutorials";
+	}
+
+	@RequestMapping("/search")
+	String search() {
+		return "app.search";
 	}
 
 	@RequestMapping("/about")
@@ -35,95 +41,5 @@ public class PageController {
 	String contact() {
 		return "app.contact";
 	}
-
-	@RequestMapping("/messages")
-	String messages() {
-		return "app.messages";
-	}
-
-	@RequestMapping("/tutorialsmanager")
-	String tutorialsmanager() {
-		return "app.tutorialsmanager";
-	}
-
-	@RequestMapping("/profile")
-	String profile() {
-		return "app.profile";
-	}
-
-	@RequestMapping("/search")
-	String search() {
-		return "app.search";
-	}
-
-	@RequestMapping("/sendemails")
-	String sendemails() {
-		return "app.sendemails";
-	}
-
-	@RequestMapping("/tutorials")
-	String tutorials() {
-		return "app.tutorials";
-	}
-
-	@RequestMapping("/usersmanager")
-	String usersmanager() {
-		return "app.usersmanager";
-	}
-	
-	@RequestMapping("/suggestnews")
-	String suggestnews() {
-		return "app.suggestnews";
-	}
-	
-	@RequestMapping("/suggesttutorial")
-	String suggesttutorial() {
-		return "app.suggesttutorial";
-	}
-
-	@RequestMapping(value="/newsmanager", method=RequestMethod.GET)
-	ModelAndView addnews(ModelAndView modelAndView) {
-		
-		modelAndView.setViewName("app.newsmanager");
-		
-		News news = new News();
-		
-		List<News> allNews = newsService.listAll();
-		
-		
-		modelAndView.getModel().put("news", news);
-		
-		modelAndView.getModel().put("allNews", allNews);
-		return modelAndView;
-	}
-	
-
-	@RequestMapping(value="/newsmanager", method=RequestMethod.POST)
-	ModelAndView addnews(ModelAndView modelAndView, News news) {
-		
-		modelAndView.setViewName("app.newsmanager");
-			
-		newsService.add(news);
-		
-		News latestNews = newsService.getLatest();
-		modelAndView.getModel().put("latestNews", latestNews);
-		
-		
-		
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="/newsmanager/delete{id}")
-		public String removeNews(@PathVariable("id") Long id){
-		
-		newsService.delete(id);
-
-		
-		return "redirect:/newsmanager";
-		
-		
-	}
-		
-	
 
 }

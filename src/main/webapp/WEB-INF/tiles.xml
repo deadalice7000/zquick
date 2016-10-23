@@ -7,7 +7,7 @@
 
 	<definition template="/WEB-INF/layouts/default.jsp" name="app.default">
 
-		<put-attribute name="title" value="Java tutorials!" />
+		<put-attribute name="title" value="Java is beautiful language!" />
 
 	</definition>
 
