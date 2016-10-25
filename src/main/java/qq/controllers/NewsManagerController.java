@@ -27,6 +27,7 @@ public class NewsManagerController {
 		News news = new News();
 		
 		List<News> allNews = newsService.listAll();
+		
 
 		//I AM REVERSING THE LIST SO THE FIRST DISPLAYED ARE THE NEWEST
 		
@@ -42,7 +43,9 @@ public class NewsManagerController {
 	@RequestMapping(value="/newsmanager", method=RequestMethod.POST)
 	ModelAndView addnews(ModelAndView modelAndView, News news) {
 		
-		modelAndView.setViewName("app.newsmanager");
+		
+		modelAndView.setViewName("redirect:/newsmanager");
+		//modelAndView.setViewName("app.newsmanager");
 			
 		newsService.add(news);
 		

@@ -13,33 +13,37 @@ public class NewsService {
 
 	@Autowired
 	private NewsDao newsDao;
-	
-	
-	public void add(News news){
-		
+
+	public void add(News news) {
+
 		newsDao.save(news);
-		
+
 	}
-	
-	public News getLatest(){
-		
-		
+
+	public News getLatest() {
+
 		return newsDao.findFirstByOrderByAddedDesc();
 	}
-		
-	public List<News> listAll(){
-		
-	
-		
+
+	public List<News> listAll() {
+
 		return (List<News>) newsDao.findAll();
-		
+
 	}
-	
-	public void delete(Long id){
-		
+
+	public void delete(Long id) {
+
 		newsDao.delete(id);
 	}
-	
-	
 
+	public News getById(Long id) {
+
+		return newsDao.findById(id);
+
+	}
+
+	public News getByTitle(String title){
+		
+		return newsDao.findByTitle(title);
+	}
 }

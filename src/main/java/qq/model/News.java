@@ -26,7 +26,7 @@ public class News {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date added;
 
-	@Column(name = "title")
+	@Column(name = "title", unique=true)
 	private String title;
 
 	@Column(name = "content")
