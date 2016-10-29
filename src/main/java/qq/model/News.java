@@ -29,7 +29,7 @@ public class News {
 	@Column(name = "title", unique=true)
 	private String title;
 
-	@Column(name = "content")
+	@Column(name = "content", columnDefinition="LONGTEXT")
 	private String content;
 
 	@PrePersist

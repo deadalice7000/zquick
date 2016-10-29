@@ -1,12 +1,11 @@
 package qq.controllers;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import qq.model.News;
@@ -18,16 +17,16 @@ public class PageController {
 	@Autowired
 	private NewsService newsService;
 
-	@RequestMapping("/")
-	ModelAndView home(ModelAndView modelAndView) {
+	@RequestMapping(value = "/")
+	ModelAndView home(ModelAndView modelAndView, @RequestParam(value = "p", defaultValue = "1") int p) {
+
+		Page<News> page = newsService.getPage(p);
+	
 		modelAndView.setViewName("app.homepage");
+		modelAndView.getModel().put("page", page);
 
-		List<News> allNews = newsService.listAll();
-
-		Collections.reverse(allNews);
-
-		modelAndView.getModel().put("allNews", allNews);
-
+		
+		
 		return modelAndView;
 
 	}
@@ -60,7 +59,6 @@ public class PageController {
 		News news = newsService.getByTitle(title);
 
 		modelAndView.getModel().put("news", news);
-		System.out.println(news.toString());
 		return modelAndView;
 
 	}

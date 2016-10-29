@@ -3,6 +3,9 @@ package qq.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import qq.model.News;
@@ -11,6 +14,8 @@ import qq.model.NewsDao;
 @Service
 public class NewsService {
 
+	private final static int PAGESIZE = 4;
+	
 	@Autowired
 	private NewsDao newsDao;
 
@@ -46,4 +51,14 @@ public class NewsService {
 		
 		return newsDao.findByTitle(title);
 	}
+	
+	public Page<News> getPage(int pageNumber){
+		
+		PageRequest request = new PageRequest(pageNumber-1, PAGESIZE, Sort.Direction.DESC, "added");
+		
+		return newsDao.findAll(request);
+		
+	}
+	
+	
 }

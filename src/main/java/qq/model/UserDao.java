@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface UserDao extends CrudRepository<SiteUser, Long> {
 
 	SiteUser findByEmail(String email);
+	SiteUser findById(Long id);
 	
 	
 }

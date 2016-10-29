@@ -25,7 +25,7 @@ public class App {
 	}
 
 	@Bean
-	public TilesConfigurer tilesConfigurer() {
+	public TilesConfigurer tilesCoenfigurer() {
 		TilesConfigurer configurer = new TilesConfigurer();
 		String[] defs = { "/WEB-INF/tiles.xml" };
 		configurer.setDefinitions(defs);
